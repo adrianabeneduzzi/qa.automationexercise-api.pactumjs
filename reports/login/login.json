@@ -1,0 +1,153 @@
+{
+  "stats": {
+    "suites": 2,
+    "tests": 2,
+    "passes": 0,
+    "pending": 0,
+    "failures": 2,
+    "start": "2025-11-05T02:23:06.071Z",
+    "end": "2025-11-05T02:23:06.671Z",
+    "duration": 600,
+    "testsRegistered": 2,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "acf9ff8c-85aa-4258-9860-d78e51630a93",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "4d3c79d5-6835-4bff-9a9b-3deefc9d813b",
+          "title": "POST /login - Teste de Contrato",
+          "fullFile": "C:\\qa.automationexercise-api.pactumjs\\tests\\login\\postLogin.contrato.test.js",
+          "file": "\\tests\\login\\postLogin.contrato.test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deve realizar login e validar contrato",
+              "fullTitle": "POST /login - Teste de Contrato Deve realizar login e validar contrato",
+              "timedOut": false,
+              "duration": 409,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "await pactum.spec()\n  .post('/login')\n  .withBody({\n    email: 'fulano@qa.com.br',\n    password: 'teste'\n  })\n  .expectStatus(200)      \n  .expectJsonSchema(loginSchema);",
+              "err": {
+                "message": "AssertionError: HTTP status 401 !== 200",
+                "estack": "AssertionError [ERR_ASSERTION]: HTTP status 401 !== 200\n    at Expect._validateStatus (node_modules\\pactum\\src\\models\\expect.js:106:14)\n    at Expect.validate (node_modules\\pactum\\src\\models\\expect.js:47:10)\n    at Tosser.validateResponse (node_modules\\pactum\\src\\models\\Tosser.js:255:23)\n    at Tosser.validate (node_modules\\pactum\\src\\models\\Tosser.js:219:18)\n    at Tosser.toss (node_modules\\pactum\\src\\models\\Tosser.js:46:18)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)",
+                "diff": "- 401\n+ 200\n"
+              },
+              "uuid": "434267fe-139d-45a6-b490-dbc2bc2b2867",
+              "parentUUID": "4d3c79d5-6835-4bff-9a9b-3deefc9d813b",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "434267fe-139d-45a6-b490-dbc2bc2b2867"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 409,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "4a795386-901f-4000-8959-a43d94e03041",
+          "title": "POST /login - Teste Funcional",
+          "fullFile": "C:\\qa.automationexercise-api.pactumjs\\tests\\login\\postLogin.funcional.test.js",
+          "file": "\\tests\\login\\postLogin.funcional.test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deve realizar login com sucesso",
+              "fullTitle": "POST /login - Teste Funcional Deve realizar login com sucesso",
+              "timedOut": false,
+              "duration": 185,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "await pactum.spec()\n  .post('/login')\n  .withBody({\n    email: 'fulano@qa.com.br',\n    password: 'Duzzi'\n  })\n  .expectStatus(200)\n  .expectJsonLike({\n    message: 'Login realizado com sucesso'\n  });",
+              "err": {
+                "message": "AssertionError: HTTP status 401 !== 200",
+                "estack": "AssertionError [ERR_ASSERTION]: HTTP status 401 !== 200\n    at Expect._validateStatus (node_modules\\pactum\\src\\models\\expect.js:106:14)\n    at Expect.validate (node_modules\\pactum\\src\\models\\expect.js:47:10)\n    at Tosser.validateResponse (node_modules\\pactum\\src\\models\\Tosser.js:255:23)\n    at Tosser.validate (node_modules\\pactum\\src\\models\\Tosser.js:219:18)\n    at Tosser.toss (node_modules\\pactum\\src\\models\\Tosser.js:46:18)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)",
+                "diff": "- 401\n+ 200\n"
+              },
+              "uuid": "aa760d67-837e-4914-b987-94e1c444bd56",
+              "parentUUID": "4a795386-901f-4000-8959-a43d94e03041",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "aa760d67-837e-4914-b987-94e1c444bd56"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 185,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "11.7.4"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "login",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "reports/login",
+        "reportFilename": "login",
+        "overwrite": "true",
+        "html": "true",
+        "json": "true"
+      },
+      "version": "6.3.1"
+    }
+  }
+}

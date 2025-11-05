@@ -1,0 +1,358 @@
+{
+  "stats": {
+    "suites": 6,
+    "tests": 6,
+    "passes": 6,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-11-05T02:23:08.712Z",
+    "end": "2025-11-05T02:23:10.505Z",
+    "duration": 1793,
+    "testsRegistered": 6,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "c3642b19-2e6a-48cf-ba4c-c78acab14770",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "a1d1e4d3-59ea-4036-9ef8-6f40cf1d4c6f",
+          "title": "DELETE /usuarios/{_id} - Teste Funcional",
+          "fullFile": "C:\\qa.automationexercise-api.pactumjs\\tests\\usuarios\\deleteUsuarioById.funcional.test.js",
+          "file": "\\tests\\usuarios\\deleteUsuarioById.funcional.test.js",
+          "beforeHooks": [
+            {
+              "title": "\"before all\" hook in \"DELETE /usuarios/{_id} - Teste Funcional\"",
+              "fullTitle": "DELETE /usuarios/{_id} - Teste Funcional \"before all\" hook in \"DELETE /usuarios/{_id} - Teste Funcional\"",
+              "timedOut": false,
+              "duration": 396,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const response = await pactum.spec()\n  .post('/usuarios')\n  .withBody({\n    nome: 'Usuário Excluir',\n    email: `excluir_${Date.now()}@qa.com`,\n    password: '1234',\n    administrador: 'true'\n  });\nuserId = response.json._id;",
+              "err": {},
+              "uuid": "fbc46e53-616a-45dd-9458-bd46f0bb9b86",
+              "parentUUID": "a1d1e4d3-59ea-4036-9ef8-6f40cf1d4c6f",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deve excluir o usuário com sucesso",
+              "fullTitle": "DELETE /usuarios/{_id} - Teste Funcional Deve excluir o usuário com sucesso",
+              "timedOut": false,
+              "duration": 177,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await pactum.spec()\n  .delete(`/usuarios/${userId}`)\n  .expectStatus(200)\n  .expectJsonSchema(deleteUsuarioSchema);",
+              "err": {},
+              "uuid": "db599166-f95a-4d61-b303-965b996a0dac",
+              "parentUUID": "a1d1e4d3-59ea-4036-9ef8-6f40cf1d4c6f",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "db599166-f95a-4d61-b303-965b996a0dac"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 177,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "3d73a171-163e-4ac3-bb89-3f66901dddf5",
+          "title": "GET /usuarios/{_id} - Teste Funcional",
+          "fullFile": "C:\\qa.automationexercise-api.pactumjs\\tests\\usuarios\\getUsuarioById.funcional.test.js",
+          "file": "\\tests\\usuarios\\getUsuarioById.funcional.test.js",
+          "beforeHooks": [
+            {
+              "title": "\"before all\" hook in \"GET /usuarios/{_id} - Teste Funcional\"",
+              "fullTitle": "GET /usuarios/{_id} - Teste Funcional \"before all\" hook in \"GET /usuarios/{_id} - Teste Funcional\"",
+              "timedOut": false,
+              "duration": 166,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const response = await pactum.spec()\n  .post('/usuarios')\n  .withBody({\n    nome: 'Usuário Teste',\n    email: `user_${Date.now()}@qa.com`,\n    password: '1234',\n    administrador: 'true'\n  });\nuserId = response.json._id;",
+              "err": {},
+              "uuid": "b4899beb-eb83-42e7-8934-cf62473aeee5",
+              "parentUUID": "3d73a171-163e-4ac3-bb89-3f66901dddf5",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deve buscar o usuário por ID com sucesso",
+              "fullTitle": "GET /usuarios/{_id} - Teste Funcional Deve buscar o usuário por ID com sucesso",
+              "timedOut": false,
+              "duration": 165,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await pactum.spec()\n  .get(`/usuarios/${userId}`)\n  .expectStatus(200)\n  .expectJsonLike({\n    nome: 'Usuário Teste'\n  });",
+              "err": {},
+              "uuid": "f82394a3-6337-43b0-9f15-4e2afab5c679",
+              "parentUUID": "3d73a171-163e-4ac3-bb89-3f66901dddf5",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "f82394a3-6337-43b0-9f15-4e2afab5c679"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 165,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "867e61a2-8110-4e0d-899a-9ef8c54382d2",
+          "title": "GET /usuarios - Teste Funcional",
+          "fullFile": "C:\\qa.automationexercise-api.pactumjs\\tests\\usuarios\\getUsuarios.funcional.test.js",
+          "file": "\\tests\\usuarios\\getUsuarios.funcional.test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deve retornar a lista de usuários com sucesso",
+              "fullTitle": "GET /usuarios - Teste Funcional Deve retornar a lista de usuários com sucesso",
+              "timedOut": false,
+              "duration": 211,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const response = await pactum.spec()\n  .get('/usuarios')\n  .expectStatus(200)\n  .returns('res.body');\n// Validações manuais adicionais:\nif (typeof response.quantidade !== 'number') {\n  throw new Error(`Esperado número em 'quantidade', mas veio: ${typeof response.quantidade}`);\n}\nif (!Array.isArray(response.usuarios)) {\n  throw new Error(`Esperado array em 'usuarios', mas veio: ${typeof response.usuarios}`);\n}\nconsole.log(`✅ Total de usuários retornados: ${response.quantidade}`);",
+              "err": {},
+              "uuid": "a78c6260-7231-4e1f-a8da-0bfeb037eac8",
+              "parentUUID": "867e61a2-8110-4e0d-899a-9ef8c54382d2",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "a78c6260-7231-4e1f-a8da-0bfeb037eac8"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 211,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "375effe3-8375-42f1-8ac6-cf94f12878ac",
+          "title": "POST /usuarios - Teste de Contrato",
+          "fullFile": "C:\\qa.automationexercise-api.pactumjs\\tests\\usuarios\\postUsuarios.contrato.test.js",
+          "file": "\\tests\\usuarios\\postUsuarios.contrato.test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deve validar o contrato da resposta de cadastro com sucesso (201)",
+              "fullTitle": "POST /usuarios - Teste de Contrato Deve validar o contrato da resposta de cadastro com sucesso (201)",
+              "timedOut": false,
+              "duration": 167,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await pactum.spec()\n  .post('/usuarios')\n  .withHeaders('Content-Type', 'application/json')\n  .withBody({\n    nome: 'Usuário Contrato QA',\n    email: `contrato_${Date.now()}@qa.com`,\n    password: 'teste',\n    administrador: 'true'\n  })\n  .expectStatus(201)\n  .expectJsonSchema(postUsuarioSchema);",
+              "err": {},
+              "uuid": "5678acb1-987c-4472-90cd-a3bd6e42479e",
+              "parentUUID": "375effe3-8375-42f1-8ac6-cf94f12878ac",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "5678acb1-987c-4472-90cd-a3bd6e42479e"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 167,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "5949a7e3-674a-4d11-b1d8-4780b62f8f3c",
+          "title": "POST /usuarios - Teste Funcional",
+          "fullFile": "C:\\qa.automationexercise-api.pactumjs\\tests\\usuarios\\postUsuarios.funcional.test.js",
+          "file": "\\tests\\usuarios\\postUsuarios.funcional.test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deve cadastrar um novo usuário com sucesso",
+              "fullTitle": "POST /usuarios - Teste Funcional Deve cadastrar um novo usuário com sucesso",
+              "timedOut": false,
+              "duration": 169,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const randomEmail = `teste_${Date.now()}@qa.com`;\nawait pactum.spec()\n  .post('/usuarios')\n  .withHeaders('Content-Type', 'application/json')\n  .withBody({\n    nome: 'Usuário QA',\n    email: randomEmail,\n    password: '1234',\n    administrador: 'true'\n  })\n  .expectStatus(201)\n  .expectJsonLike({\n    message: 'Cadastro realizado com sucesso'\n  });",
+              "err": {},
+              "uuid": "078306e7-a5bd-4688-92ef-59f36b9fd7ad",
+              "parentUUID": "5949a7e3-674a-4d11-b1d8-4780b62f8f3c",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "078306e7-a5bd-4688-92ef-59f36b9fd7ad"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 169,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "e5d8efa9-c4a1-42f2-b647-0e1afaa2ee8d",
+          "title": "PUT /usuarios/{_id} - Teste Funcional",
+          "fullFile": "C:\\qa.automationexercise-api.pactumjs\\tests\\usuarios\\putUsuarioById.funcional.test.js",
+          "file": "\\tests\\usuarios\\putUsuarioById.funcional.test.js",
+          "beforeHooks": [
+            {
+              "title": "\"before all\" hook in \"PUT /usuarios/{_id} - Teste Funcional\"",
+              "fullTitle": "PUT /usuarios/{_id} - Teste Funcional \"before all\" hook in \"PUT /usuarios/{_id} - Teste Funcional\"",
+              "timedOut": false,
+              "duration": 165,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const response = await pactum.spec()\n  .post('/usuarios')\n  .withBody({\n    nome: 'Usuário Editar',\n    email: `editar_${Date.now()}@qa.com`,\n    password: '1234',\n    administrador: 'true'\n  });\nuserId = response.json._id;",
+              "err": {},
+              "uuid": "93ffcacd-6610-4217-8f08-a07ca4055a57",
+              "parentUUID": "e5d8efa9-c4a1-42f2-b647-0e1afaa2ee8d",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deve editar o usuário com sucesso",
+              "fullTitle": "PUT /usuarios/{_id} - Teste Funcional Deve editar o usuário com sucesso",
+              "timedOut": false,
+              "duration": 166,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await pactum.spec()\n  .put(`/usuarios/${userId}`)\n  .withBody({\n    nome: 'Usuário Editado',\n    email: `editar_${Date.now()}@qa.com`,\n    password: '1234',\n    administrador: 'true'\n  })\n  .expectStatus(200)\n  .expectJsonLike({\n    message: 'Registro alterado com sucesso'\n  });",
+              "err": {},
+              "uuid": "5064fa79-a73d-49cc-8359-92df6f99e160",
+              "parentUUID": "e5d8efa9-c4a1-42f2-b647-0e1afaa2ee8d",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "5064fa79-a73d-49cc-8359-92df6f99e160"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 166,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "11.7.4"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "usuarios",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "reports/usuarios",
+        "reportFilename": "usuarios",
+        "overwrite": "true",
+        "html": "true",
+        "json": "true"
+      },
+      "version": "6.3.1"
+    }
+  }
+}

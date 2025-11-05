@@ -1,0 +1,27 @@
+{
+  "name": "qa.automationexercise-api.pactumjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+  "test": "mocha test.js",
+
+  "test:login": "mocha tests/login/**/*.test.js",
+  "test:usuarios": "mocha tests/usuarios/**/*.test.js",
+  "test:produtos": "mocha tests/produtos/**/*.test.js",
+
+  "report:login": "mocha tests/login/**/*.test.js --reporter mochawesome --reporter-options reportDir=reports/login,reportFilename=login,overwrite=true,html=true,json=true",
+  "report:usuarios": "mocha tests/usuarios/**/*.test.js --reporter mochawesome --reporter-options reportDir=reports/usuarios,reportFilename=usuarios,overwrite=true,html=true,json=true",
+  "report:produtos": "mocha tests/produtos/**/*.test.js --reporter mochawesome --reporter-options reportDir=reports/produtos,reportFilename=produtos,overwrite=true,html=true,json=true"
+},
+
+  "author": "Adriana Beneduzzi",
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "^11.7.4",
+    "mochawesome": "^7.1.4",
+    "mochawesome-merge": "^5.0.0",
+    "mochawesome-report-generator": "^6.3.1",
+    "pactum": "^3.8.0"
+  }
+}

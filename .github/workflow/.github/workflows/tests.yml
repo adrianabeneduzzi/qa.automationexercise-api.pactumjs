@@ -1,0 +1,52 @@
+name: 🧪 API Tests - PactumJS
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    env:
+      NODE_OPTIONS: "--max-old-space-size=4096"
+
+    steps:
+      - name: 📦 Checkout repository
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      - name: 📥 Install dependencies
+        run: npm ci
+
+      - name: 🗂 Prepare reports folders
+        run: mkdir -p reports/login reports/usuarios reports/produtos || true
+
+      - name: 🧪 Run Login tests
+        run: npm run report:login
+        continue-on-error: true
+
+      - name: 🧪 Run Usuários tests
+        run: npm run report:usuarios
+        continue-on-error: true
+
+      - name: 🧪 Run Produtos tests
+        run: npm run report:produtos
+        continue-on-error: true
+
+      - name: 🧩 Merge JSON reports and generate combined HTML
+        run: |
+          npx mochawesome-merge reports/login/*.json reports/usuarios/*.json reports/produtos/*.json > reports/all.json || true
+          npx marge reports/all.json -f index -o reports/html || true
+
+      - name: 📤 Upload HTML reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: pactum-reports
+          path: reports/html

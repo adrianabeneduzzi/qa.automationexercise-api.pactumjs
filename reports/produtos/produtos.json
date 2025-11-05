@@ -1,0 +1,420 @@
+{
+  "stats": {
+    "suites": 6,
+    "tests": 2,
+    "passes": 0,
+    "pending": 0,
+    "failures": 2,
+    "start": "2025-11-05T02:23:12.533Z",
+    "end": "2025-11-05T02:23:13.948Z",
+    "duration": 1415,
+    "testsRegistered": 6,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 4,
+    "hasOther": true,
+    "skipped": 4,
+    "hasSkipped": true
+  },
+  "results": [
+    {
+      "uuid": "176d2a2a-df09-4eea-9d25-f564b4def588",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "6b21c496-b5a8-4b11-acb7-4f952edd50f3",
+          "title": "DELETE /produtos/:id - Teste Funcional",
+          "fullFile": "C:\\qa.automationexercise-api.pactumjs\\tests\\produtos\\deleteProdutoById.funcional.test.js",
+          "file": "\\tests\\produtos\\deleteProdutoById.funcional.test.js",
+          "beforeHooks": [
+            {
+              "title": "\"before all\" hook for \"Deve deletar o produto criado\"",
+              "fullTitle": "DELETE /produtos/:id - Teste Funcional \"before all\" hook for \"Deve deletar o produto criado\"",
+              "timedOut": false,
+              "duration": 391,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "const login = await spec()\n  .post('https://serverest.dev/login')\n  .withJson({ email: 'beneo@qa.com.br', password: 'Duzzi' })\n  .expectStatus(200);\ntoken = login.header['authorization'] || login.body.authorization;\nprodutoId = await spec()\n  .post('https://serverest.dev/produtos')\n  .withHeaders('Authorization', `Bearer ${token}`)\n  .withJson({\n    nome: `ProdutoParaDelete-${Date.now()}`,\n    preco: 50,\n    descricao: 'Produto para teste delete',\n    quantidade: 1\n  })\n  .expectStatus(201)\n  .returns('body._id');",
+              "err": {
+                "message": "AssertionError: HTTP status 401 !== 200",
+                "estack": "AssertionError [ERR_ASSERTION]: HTTP status 401 !== 200\n    at Expect._validateStatus (node_modules\\pactum\\src\\models\\expect.js:106:14)\n    at Expect.validate (node_modules\\pactum\\src\\models\\expect.js:47:10)\n    at Tosser.validateResponse (node_modules\\pactum\\src\\models\\Tosser.js:255:23)\n    at Tosser.validate (node_modules\\pactum\\src\\models\\Tosser.js:219:18)\n    at Tosser.toss (node_modules\\pactum\\src\\models\\Tosser.js:46:18)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)",
+                "diff": "- 401\n+ 200\n"
+              },
+              "uuid": "bf39e2d5-c43b-496b-9510-5b269325bbb1",
+              "parentUUID": "6b21c496-b5a8-4b11-acb7-4f952edd50f3",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deve deletar o produto criado",
+              "fullTitle": "DELETE /produtos/:id - Teste Funcional Deve deletar o produto criado",
+              "timedOut": false,
+              "duration": 0,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await spec()\n  .delete(`https://serverest.dev/produtos/${produtoId}`)\n  .withHeaders('Authorization', `Bearer ${token}`)\n  .expectStatus(200);",
+              "err": {},
+              "uuid": "0e82c8ef-38fc-4f3a-97d9-462f632977a0",
+              "parentUUID": "6b21c496-b5a8-4b11-acb7-4f952edd50f3",
+              "isHook": false,
+              "skipped": true
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [],
+          "pending": [],
+          "skipped": [
+            "0e82c8ef-38fc-4f3a-97d9-462f632977a0"
+          ],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "b0d07541-c188-4d18-9ba2-e595c9c10ee1",
+          "title": "GET /produtos/:id - Teste Funcional",
+          "fullFile": "C:\\qa.automationexercise-api.pactumjs\\tests\\produtos\\getProdutoById.funcional.test.js",
+          "file": "\\tests\\produtos\\getProdutoById.funcional.test.js",
+          "beforeHooks": [
+            {
+              "title": "\"before all\" hook in \"GET /produtos/:id - Teste Funcional\"",
+              "fullTitle": "GET /produtos/:id - Teste Funcional \"before all\" hook in \"GET /produtos/:id - Teste Funcional\"",
+              "timedOut": false,
+              "duration": 168,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "produtoId = await spec()\n  .get('https://serverest.dev/produtos')\n  .expectStatus(200)\n  .returns('body[0]._id');",
+              "err": {},
+              "uuid": "378ccbf8-4e31-417a-8db9-9f6fa744708f",
+              "parentUUID": "b0d07541-c188-4d18-9ba2-e595c9c10ee1",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deve retornar um produto pelo ID",
+              "fullTitle": "GET /produtos/:id - Teste Funcional Deve retornar um produto pelo ID",
+              "timedOut": false,
+              "duration": 172,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "await spec()\n  .get(`https://serverest.dev/produtos/${produtoId}`)\n  .expectStatus(200)\n  .expectJsonLike({ _id: produtoId });",
+              "err": {
+                "message": "AssertionError: HTTP status 400 !== 200",
+                "estack": "AssertionError [ERR_ASSERTION]: HTTP status 400 !== 200\n    at Expect._validateStatus (node_modules\\pactum\\src\\models\\expect.js:106:14)\n    at Expect.validate (node_modules\\pactum\\src\\models\\expect.js:47:10)\n    at Tosser.validateResponse (node_modules\\pactum\\src\\models\\Tosser.js:255:23)\n    at Tosser.validate (node_modules\\pactum\\src\\models\\Tosser.js:219:18)\n    at Tosser.toss (node_modules\\pactum\\src\\models\\Tosser.js:46:18)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)",
+                "diff": "- 400\n+ 200\n"
+              },
+              "uuid": "07701a72-588c-419c-a273-a732bbab2bfa",
+              "parentUUID": "b0d07541-c188-4d18-9ba2-e595c9c10ee1",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "07701a72-588c-419c-a273-a732bbab2bfa"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 172,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "d2626afa-dc26-406c-991e-13a568c037b7",
+          "title": "GET /produtos - Teste Funcional",
+          "fullFile": "C:\\qa.automationexercise-api.pactumjs\\tests\\produtos\\getProdutos.funcional.test.js",
+          "file": "\\tests\\produtos\\getProdutos.funcional.test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deve listar todos os produtos",
+              "fullTitle": "GET /produtos - Teste Funcional Deve listar todos os produtos",
+              "timedOut": false,
+              "duration": 173,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "await spec()\n  .get('https://serverest.dev/produtos')\n  .expectStatus(200)\n  .expectJsonMatch([{}]);",
+              "err": {
+                "message": "AssertionError: Json doesn't have type 'array' at '$' but found 'object'",
+                "estack": "AssertionError [ERR_ASSERTION]: Json doesn't have type 'array' at '$' but found 'object'\n    at Expect.fail (node_modules\\pactum\\src\\models\\expect.js:464:12)\n    at Expect._validateJsonMatch (node_modules\\pactum\\src\\models\\expect.js:289:14)\n    at Expect.validate (node_modules\\pactum\\src\\models\\expect.js:60:10)\n    at Tosser.validateResponse (node_modules\\pactum\\src\\models\\Tosser.js:255:23)\n    at Tosser.validate (node_modules\\pactum\\src\\models\\Tosser.js:219:18)\n    at Tosser.toss (node_modules\\pactum\\src\\models\\Tosser.js:46:18)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)",
+                "diff": null
+              },
+              "uuid": "69d1dfa5-c48a-46d7-9427-58429a495e3e",
+              "parentUUID": "d2626afa-dc26-406c-991e-13a568c037b7",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "69d1dfa5-c48a-46d7-9427-58429a495e3e"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 173,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "40180f3f-775d-4ddc-aa09-6d450680809f",
+          "title": "POST /produtos - Teste de Contrato",
+          "fullFile": "C:\\qa.automationexercise-api.pactumjs\\tests\\produtos\\postProdutos.contrato.test.js",
+          "file": "\\tests\\produtos\\postProdutos.contrato.test.js",
+          "beforeHooks": [
+            {
+              "title": "\"before all\" hook for \"Deve validar o contrato de cadastro de produto\"",
+              "fullTitle": "POST /produtos - Teste de Contrato \"before all\" hook for \"Deve validar o contrato de cadastro de produto\"",
+              "timedOut": false,
+              "duration": 166,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "const res = await spec()\n  .post('https://serverest.dev/login')\n  .withJson({ email: 'beneo@qa.com.br', password: 'Duzzi' })\n  .expectStatus(200);\ntoken = res.header['authorization'] || res.body.authorization;",
+              "err": {
+                "message": "AssertionError: HTTP status 401 !== 200",
+                "estack": "AssertionError [ERR_ASSERTION]: HTTP status 401 !== 200\n    at Expect._validateStatus (node_modules\\pactum\\src\\models\\expect.js:106:14)\n    at Expect.validate (node_modules\\pactum\\src\\models\\expect.js:47:10)\n    at Tosser.validateResponse (node_modules\\pactum\\src\\models\\Tosser.js:255:23)\n    at Tosser.validate (node_modules\\pactum\\src\\models\\Tosser.js:219:18)\n    at Tosser.toss (node_modules\\pactum\\src\\models\\Tosser.js:46:18)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)",
+                "diff": "- 401\n+ 200\n"
+              },
+              "uuid": "19277d22-9e02-44da-a694-7ff1b40ddbbd",
+              "parentUUID": "40180f3f-775d-4ddc-aa09-6d450680809f",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deve validar o contrato de cadastro de produto",
+              "fullTitle": "POST /produtos - Teste de Contrato Deve validar o contrato de cadastro de produto",
+              "timedOut": false,
+              "duration": 0,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const nomeProduto = `ProdutoContrato-${Date.now()}`;\nawait spec()\n  .post('https://serverest.dev/produtos')\n  .withHeaders('Authorization', `Bearer ${token}`)\n  .withJson({\n    nome: nomeProduto,\n    preco: 120,\n    descricao: 'Produto teste contrato',\n    quantidade: 3\n  })\n  .expectStatus(201)\n  .expectJsonSchema({\n    type: 'object',\n    properties: {\n      _id: { type: 'string' },\n      nome: { type: 'string' },\n      preco: { type: 'number' },\n      descricao: { type: 'string' },\n      quantidade: { type: 'number' }\n    },\n    required: ['_id','nome','preco','descricao','quantidade']\n  });",
+              "err": {},
+              "uuid": "72eb530f-61eb-40aa-ab0d-23cadf7cec56",
+              "parentUUID": "40180f3f-775d-4ddc-aa09-6d450680809f",
+              "isHook": false,
+              "skipped": true
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [],
+          "pending": [],
+          "skipped": [
+            "72eb530f-61eb-40aa-ab0d-23cadf7cec56"
+          ],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "5d6801aa-5e8e-4e78-8c6a-185ef79c2114",
+          "title": "POST /produtos - Teste Funcional",
+          "fullFile": "C:\\qa.automationexercise-api.pactumjs\\tests\\produtos\\postProdutos.funcional.test.js",
+          "file": "\\tests\\produtos\\postProdutos.funcional.test.js",
+          "beforeHooks": [
+            {
+              "title": "\"before all\" hook for \"Deve cadastrar um produto com nome único\"",
+              "fullTitle": "POST /produtos - Teste Funcional \"before all\" hook for \"Deve cadastrar um produto com nome único\"",
+              "timedOut": false,
+              "duration": 167,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "const res = await spec()\n  .post('https://serverest.dev/login')\n  .withJson({ email: 'beneo@qa.com.br', password: 'Duzzi' })\n  .expectStatus(200);\ntoken = res.header['authorization'] || res.body.authorization;",
+              "err": {
+                "message": "AssertionError: HTTP status 401 !== 200",
+                "estack": "AssertionError [ERR_ASSERTION]: HTTP status 401 !== 200\n    at Expect._validateStatus (node_modules\\pactum\\src\\models\\expect.js:106:14)\n    at Expect.validate (node_modules\\pactum\\src\\models\\expect.js:47:10)\n    at Tosser.validateResponse (node_modules\\pactum\\src\\models\\Tosser.js:255:23)\n    at Tosser.validate (node_modules\\pactum\\src\\models\\Tosser.js:219:18)\n    at Tosser.toss (node_modules\\pactum\\src\\models\\Tosser.js:46:18)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)",
+                "diff": "- 401\n+ 200\n"
+              },
+              "uuid": "6194992e-0343-4e2f-82d1-335e29766e69",
+              "parentUUID": "5d6801aa-5e8e-4e78-8c6a-185ef79c2114",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deve cadastrar um produto com nome único",
+              "fullTitle": "POST /produtos - Teste Funcional Deve cadastrar um produto com nome único",
+              "timedOut": false,
+              "duration": 0,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const nomeProduto = `ProdutoTeste-${Date.now()}`;\nawait spec()\n  .post('https://serverest.dev/produtos')\n  .withHeaders('Authorization', `Bearer ${token}`)\n  .withJson({\n    nome: nomeProduto,\n    preco: 100,\n    descricao: 'Descrição teste produto',\n    quantidade: 5\n  })\n  .expectStatus(201)\n  .expectJsonLike({ nome: nomeProduto });",
+              "err": {},
+              "uuid": "7b1b58ff-b6a6-466b-bf13-931f6819b039",
+              "parentUUID": "5d6801aa-5e8e-4e78-8c6a-185ef79c2114",
+              "isHook": false,
+              "skipped": true
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [],
+          "pending": [],
+          "skipped": [
+            "7b1b58ff-b6a6-466b-bf13-931f6819b039"
+          ],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "b7b2b2d2-3815-44d7-9182-bae2df17342e",
+          "title": "PUT /produtos/:id - Teste Funcional",
+          "fullFile": "C:\\qa.automationexercise-api.pactumjs\\tests\\produtos\\putProdutoById.funcional.test.js",
+          "file": "\\tests\\produtos\\putProdutoById.funcional.test.js",
+          "beforeHooks": [
+            {
+              "title": "\"before all\" hook for \"Deve atualizar o produto criado\"",
+              "fullTitle": "PUT /produtos/:id - Teste Funcional \"before all\" hook for \"Deve atualizar o produto criado\"",
+              "timedOut": false,
+              "duration": 166,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "const login = await spec()\n  .post('https://serverest.dev/login')\n  .withJson({ email: 'beneo@qa.com.br', password: 'Duzzi' })\n  .expectStatus(200);\ntoken = login.header['authorization'] || login.body.authorization;\nprodutoId = await spec()\n  .post('https://serverest.dev/produtos')\n  .withHeaders('Authorization', `Bearer ${token}`)\n  .withJson({\n    nome: `ProdutoParaPut-${Date.now()}`,\n    preco: 50,\n    descricao: 'Produto criado para teste put',\n    quantidade: 2\n  })\n  .expectStatus(201)\n  .returns('body._id');",
+              "err": {
+                "message": "AssertionError: HTTP status 401 !== 200",
+                "estack": "AssertionError [ERR_ASSERTION]: HTTP status 401 !== 200\n    at Expect._validateStatus (node_modules\\pactum\\src\\models\\expect.js:106:14)\n    at Expect.validate (node_modules\\pactum\\src\\models\\expect.js:47:10)\n    at Tosser.validateResponse (node_modules\\pactum\\src\\models\\Tosser.js:255:23)\n    at Tosser.validate (node_modules\\pactum\\src\\models\\Tosser.js:219:18)\n    at Tosser.toss (node_modules\\pactum\\src\\models\\Tosser.js:46:18)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)",
+                "diff": "- 401\n+ 200\n"
+              },
+              "uuid": "2e918e6e-69f8-4563-99f2-c013ee4e1525",
+              "parentUUID": "b7b2b2d2-3815-44d7-9182-bae2df17342e",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deve atualizar o produto criado",
+              "fullTitle": "PUT /produtos/:id - Teste Funcional Deve atualizar o produto criado",
+              "timedOut": false,
+              "duration": 0,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const novoNome = `ProdutoAtualizado-${Date.now()}`;\nawait spec()\n  .put(`https://serverest.dev/produtos/${produtoId}`)\n  .withHeaders('Authorization', `Bearer ${token}`)\n  .withJson({\n    nome: novoNome,\n    preco: 150,\n    descricao: 'Produto atualizado teste',\n    quantidade: 7\n  })\n  .expectStatus(200)\n  .expectJsonLike({ nome: novoNome });",
+              "err": {},
+              "uuid": "57d8c1d8-43f9-4261-99d9-a90240cd9a5b",
+              "parentUUID": "b7b2b2d2-3815-44d7-9182-bae2df17342e",
+              "isHook": false,
+              "skipped": true
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [],
+          "pending": [],
+          "skipped": [
+            "57d8c1d8-43f9-4261-99d9-a90240cd9a5b"
+          ],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "11.7.4"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "produtos",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "reports/produtos",
+        "reportFilename": "produtos",
+        "overwrite": "true",
+        "html": "true",
+        "json": "true"
+      },
+      "version": "6.3.1"
+    }
+  }
+}

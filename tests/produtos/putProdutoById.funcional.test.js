@@ -1,0 +1,43 @@
+const { spec } = require('pactum');
+
+describe('PUT /produtos/:id - Teste Funcional', function() {
+  let token;
+  let produtoId;
+
+  before(async function() {
+    const login = await spec()
+      .post('https://serverest.dev/login')
+      .withJson({ email: 'beneo@qa.com.br', password: 'Duzzi' })
+      .expectStatus(200);
+
+    token = login.header['authorization'] || login.body.authorization;
+
+    produtoId = await spec()
+      .post('https://serverest.dev/produtos')
+      .withHeaders('Authorization', `Bearer ${token}`)
+      .withJson({
+        nome: `ProdutoParaPut-${Date.now()}`,
+        preco: 50,
+        descricao: 'Produto criado para teste put',
+        quantidade: 2
+      })
+      .expectStatus(201)
+      .returns('body._id');
+  });
+
+  it('Deve atualizar o produto criado', async function() {
+    const novoNome = `ProdutoAtualizado-${Date.now()}`;
+
+    await spec()
+      .put(`https://serverest.dev/produtos/${produtoId}`)
+      .withHeaders('Authorization', `Bearer ${token}`)
+      .withJson({
+        nome: novoNome,
+        preco: 150,
+        descricao: 'Produto atualizado teste',
+        quantidade: 7
+      })
+      .expectStatus(200)
+      .expectJsonLike({ nome: novoNome });
+  });
+});
