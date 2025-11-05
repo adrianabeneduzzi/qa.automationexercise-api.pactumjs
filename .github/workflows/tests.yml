@@ -50,7 +50,7 @@ jobs:
         with:
           name: pactum-reports
           path: |
-            reports/login/html
-            reports/usuarios/html
-            reports/produtos/html
-            reports/html
+            reports/login
+            reports/usuarios
+            reports/produtos
+            reports/
